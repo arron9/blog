@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO" monitorInterval="30">
-    <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c:%L
-      %highlight{%level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue} - %msg%n" />
-        </Console>
-    </Appenders>
+<configuration>
 
-    <Loggers>
-        <Logger name="com.yunchen" level="DEBUG">
-            <AppenderRef ref="Console" />
-        </Logger>
-        <Root level="INFO">
-            <AppenderRef ref="Console"/>
-        </Root>
-    </Loggers>
-</Configuration>
+    <!-- 阻止logback打印状态信息 -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <property name="app_name" value="novel-openapi" />
+    <!-- 要放置在data目录下 -->
+    <property name="log_home" value="/data/logs/novel-openapi"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %c %level [%thread] :%line %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %c %level [%thread] :%line %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件大于512MB时生成一个新的日志文件，每天生成一个新的日志文件, 最多保留5个日志文件-->
+            <fileNamePattern>${log_home}/${app_name}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>512MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+</configuration>
