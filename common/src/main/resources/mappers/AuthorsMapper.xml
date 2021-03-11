@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunchen.common.mapper.AuthorsMapper">
+  <resultMap id="BaseResultMap" type="com.yunchen.common.model.Authors">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nick" jdbcType="VARCHAR" property="nick" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="descrition" jdbcType="VARCHAR" property="descrition" />
+    <result column="connact" jdbcType="VARCHAR" property="connact" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+  </resultMap>
+</mapper>
