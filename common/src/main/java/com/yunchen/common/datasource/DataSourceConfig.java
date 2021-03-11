@@ -1,4 +1,4 @@
-package com.yunchen.common.config;
+package com.yunchen.common.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;

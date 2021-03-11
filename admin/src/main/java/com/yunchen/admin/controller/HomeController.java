@@ -1,5 +1,6 @@
 package com.yunchen.admin.controller;
 
+import com.yunchen.common.annotaion.AuthedAccount;
 import com.yunchen.common.mapper.AuthorsMapper;
 import com.yunchen.common.model.Authors;
 import org.slf4j.Logger;
@@ -22,9 +23,9 @@ public class HomeController {
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/")
-    public List<Authors> index() {
+    public Authors index(@AuthedAccount Authors authors) {
         //List<Authors> data = Lists.newArrayList("hello", "blog");
-        List<Authors> data =  authorsMapper.selectAll();
+        //List<Authors> data =  authorsMapper.selectAll();
         /*List<Authors> books = jdbcTemplate.query("select * from book", new RowMapper<Authors>(){
             @Override
             public Authors mapRow(ResultSet rs, int i) throws SQLException {
@@ -35,6 +36,6 @@ public class HomeController {
                 return authors;
             }
         });*/
-        return data;
+        return authors;
     }
 }
