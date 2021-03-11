@@ -1,16 +1,17 @@
 package com.yunchen.admin.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.yunchen.admin.server.AuthorsServer;
 import com.yunchen.common.Consts.RetCodeEnum;
 import com.yunchen.common.annotaion.AuthedAccount;
-import com.yunchen.common.mapper.AuthorsMapper;
 import com.yunchen.common.model.Authors;
 import com.yunchen.common.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,15 +21,13 @@ public class HomeController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    public AuthorsMapper authorsMapper;
+    AuthorsServer authorsServer;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/")
-    public Response<Authors> index(@AuthedAccount Authors authors) {
-        //List<Authors> data = Lists.newArrayList("hello", "blog");
-        //List<Authors> data =  authorsMapper.selectAll();
+    public Response<PageInfo<Authors>> index(Integer page, @AuthedAccount Authors authors) {
         /*List<Authors> books = jdbcTemplate.query("select * from book", new RowMapper<Authors>(){
             @Override
             public Authors mapRow(ResultSet rs, int i) throws SQLException {
@@ -39,6 +38,8 @@ public class HomeController {
                 return authors;
             }
         });*/
-        return new Response<>(RetCodeEnum.SUCCESS, authors);
+
+        PageInfo<Authors> authors2 = authorsServer.allAuthors(page);
+        return new Response<>(RetCodeEnum.SUCCESS, authors2);
     }
 }
