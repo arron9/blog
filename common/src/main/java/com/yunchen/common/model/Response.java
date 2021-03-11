@@ -16,6 +16,7 @@ public class Response<T> {
     public Response(RetCodeEnum retCodeEnum) {
         this.code =  retCodeEnum.getCode();
         this.msg =  retCodeEnum.getMsg();
+        this.data = null;
     }
 
     public Response(RetCodeEnum retCodeEnum, T data) {

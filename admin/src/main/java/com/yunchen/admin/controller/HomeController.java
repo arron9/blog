@@ -1,12 +1,15 @@
 package com.yunchen.admin.controller;
 
+import com.yunchen.common.Consts.RetCodeEnum;
 import com.yunchen.common.annotaion.AuthedAccount;
 import com.yunchen.common.mapper.AuthorsMapper;
 import com.yunchen.common.model.Authors;
+import com.yunchen.common.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +26,7 @@ public class HomeController {
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/")
-    public Authors index(@AuthedAccount Authors authors) {
+    public Response<Authors> index(@AuthedAccount Authors authors) {
         //List<Authors> data = Lists.newArrayList("hello", "blog");
         //List<Authors> data =  authorsMapper.selectAll();
         /*List<Authors> books = jdbcTemplate.query("select * from book", new RowMapper<Authors>(){
@@ -36,6 +39,6 @@ public class HomeController {
                 return authors;
             }
         });*/
-        return authors;
+        return new Response<>(RetCodeEnum.SUCCESS, authors);
     }
 }
