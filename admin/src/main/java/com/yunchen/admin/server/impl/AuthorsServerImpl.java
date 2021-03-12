@@ -16,6 +16,6 @@ public class AuthorsServerImpl implements AuthorsServer {
 
     @Override
     public PageInfo<Authors> allAuthors(Integer page) {
-        return authorsDao.selectAll(new PageQuery(page, PageQuery.DEFAULT_PAGE_SIZE));
+        return authorsDao.selectAll(new PageQuery(page, 1));
     }
 }

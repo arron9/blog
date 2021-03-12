@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunchen.common.mapper.AdminUsersMapper">
+  <resultMap id="BaseResultMap" type="com.yunchen.common.model.AdminUsers">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="api_token" jdbcType="VARCHAR" property="apiToken" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="token_expire_time" jdbcType="TIMESTAMP" property="tokenExpireTime" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="gm_servers" jdbcType="LONGVARCHAR" property="gmServers" />
+  </resultMap>
+</mapper>

@@ -13,7 +13,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.PrintStream;
+
 @RestController
+@RequestMapping("/api/v1/")
 public class IndexController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -35,6 +38,7 @@ public class IndexController {
                 return authors;
             }
         });*/
+        log.info("");
 
         PageInfo<Authors> authors2 = authorsServer.allAuthors(page);
         return new Response<>(RetCodeEnum.SUCCESS, authors2);

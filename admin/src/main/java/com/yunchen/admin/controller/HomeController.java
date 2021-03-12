@@ -3,6 +3,7 @@ package com.yunchen.admin.controller;
 import com.github.pagehelper.PageInfo;
 import com.yunchen.admin.server.AuthorsServer;
 import com.yunchen.common.Consts.RetCodeEnum;
+import com.yunchen.common.annotaion.AuthLogin;
 import com.yunchen.common.annotaion.AuthedAccount;
 import com.yunchen.common.model.Authors;
 import com.yunchen.common.model.Response;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/admin/v1/")
 public class HomeController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -27,6 +29,7 @@ public class HomeController {
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/")
+    @AuthLogin
     public Response<PageInfo<Authors>> index(Integer page, @AuthedAccount Authors authors) {
         /*List<Authors> books = jdbcTemplate.query("select * from book", new RowMapper<Authors>(){
             @Override

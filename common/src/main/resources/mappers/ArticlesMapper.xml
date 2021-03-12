@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunchen.common.mapper.ArticlesMapper">
+  <resultMap id="BaseResultMap" type="com.yunchen.common.model.Articles">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="pulished_at" jdbcType="TIMESTAMP" property="pulishedAt" />
+    <result column="view_cnt" jdbcType="INTEGER" property="viewCnt" />
+    <result column="star_cnt" jdbcType="INTEGER" property="starCnt" />
+    <result column="comment_cnt" jdbcType="VARCHAR" property="commentCnt" />
+    <result column="authors_id" jdbcType="INTEGER" property="authorsId" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+</mapper>

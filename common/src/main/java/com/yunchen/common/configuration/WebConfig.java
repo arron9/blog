@@ -1,5 +1,6 @@
 package com.yunchen.common.configuration;
 
+import com.yunchen.common.annotaion.handle.AuthLoginInterceptor;
 import com.yunchen.common.annotaion.handle.AuthedAccountArgumentReslover;
 import com.yunchen.common.interceptor.SignInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -17,11 +18,15 @@ public class WebConfig implements WebMvcConfigurer {
     private SignInterceptor signInterceptor;
 
     @Resource
+    private AuthLoginInterceptor authLoginInterceptor;
+
+    @Resource
     private AuthedAccountArgumentReslover authedAccountArgumentReslover;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(signInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(signInterceptor).addPathPatterns("/api/**");
+        registry.addInterceptor(authLoginInterceptor).addPathPatterns("/admin/**");
     }
 
     @Override

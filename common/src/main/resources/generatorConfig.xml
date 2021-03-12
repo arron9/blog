@@ -52,5 +52,9 @@
 
         <!-- 生成那些表，tableName对应数据库表，domainObjectName对应实体类名 -->
         <table tableName="authors" domainObjectName="Authors" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="articles" domainObjectName="Articles" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="tags" domainObjectName="Tags" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="category" domainObjectName="category" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="admin_users" domainObjectName="AdminUsers" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
