@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 public class SignInterceptor implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        request.setAttribute("username", "jiangsx");
         if (request.getParameter("sign") == null) {
             throw new BadRequestException();
         }

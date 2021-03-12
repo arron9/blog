@@ -12,13 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/admin/v1/")
+@RequestMapping("/admin/v1/home")
 public class HomeController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -28,8 +25,7 @@ public class HomeController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @RequestMapping("/")
-    @AuthLogin
+    @RequestMapping("/index")
     public Response<PageInfo<Authors>> index(Integer page, @AuthedAccount Authors authors) {
         /*List<Authors> books = jdbcTemplate.query("select * from book", new RowMapper<Authors>(){
             @Override

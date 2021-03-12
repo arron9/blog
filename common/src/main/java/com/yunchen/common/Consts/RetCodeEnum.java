@@ -1,9 +1,11 @@
 package com.yunchen.common.Consts;
 
 public enum RetCodeEnum {
-    SUCCESS(200, "success"),
+    SUCCESS(0, "success"),
     FAIL(-1, "request fail"),
-    BADREQUEST(400, "bad request");
+    BADREQUEST(400, "bad request"),
+
+    NO_REGISTER(10001, "no register");
 
     private int code;
     private String msg;

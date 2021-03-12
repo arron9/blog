@@ -15,12 +15,18 @@ public class AuthLoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String username = request.getHeader("username");
+        if (username == null) {
+            throw new BadRequestException("请先登录");
+        }
+
+        request.setAttribute("username", username);
         if (handler instanceof HandlerMethod) {
             AuthLogin annotaion = ((HandlerMethod) handler).getMethodAnnotation(AuthLogin.class);
             if (annotaion == null) {
                 return true;
             } else {
-                throw new BadRequestException("请先登录");
+                throw new BadRequestException("登录失效");
             }
         }
 

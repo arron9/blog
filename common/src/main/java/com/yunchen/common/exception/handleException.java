@@ -14,9 +14,4 @@ public class handleException{
     public Response BadRequestException(BadRequestException e) {
         return new Response<>(RetCodeEnum.BADREQUEST, e.getMessage());
     }
-
-    @ExceptionHandler(Exception.class)
-    public Response BaseException(Exception e) {
-        return new Response<>(RetCodeEnum.BADREQUEST, e.getMessage());
-    }
 }

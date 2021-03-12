@@ -23,7 +23,6 @@ public class AuthedAccountArgumentReslover implements HandlerMethodArgumentResol
         Authors authors = new Authors();
         String username = nativeWebRequest.getNativeRequest(HttpServletRequest.class).getAttribute("username").toString();
         authors.setName(username);
-        authors.setId(556);
         return authors;
     }
 }
