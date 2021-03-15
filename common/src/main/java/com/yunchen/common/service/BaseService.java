@@ -1,4 +1,4 @@
-package com.yunchen.common.dao;
+package com.yunchen.common.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,7 +15,7 @@ import java.util.List;
  * @param <T>  model
  * @param <PK> key
  */
-public interface BaseDao<T, PK> {
+public interface BaseService<T, PK> {
     BaseMapper<T> getBaseMapper();
 
     default int deleteByPrimaryKey(PK key) {
@@ -99,7 +99,7 @@ public interface BaseDao<T, PK> {
     }
 
     default T keyToRecord(PK key) {
-        Class<T> klass = GenericUtils.getEntityClass(getClass(), BaseDao.class);
+        Class<T> klass = GenericUtils.getEntityClass(getClass(), BaseService.class);
         if (null == klass) {
             throw new RuntimeException("can't locate entity class");
         }

@@ -1,7 +1,7 @@
 package com.yunchen.api.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.yunchen.api.server.AuthorsServer;
+import com.yunchen.api.service.AuthorsService;
 import com.yunchen.common.Consts.RetCodeEnum;
 import com.yunchen.common.annotaion.AuthedAccount;
 import com.yunchen.common.model.Authors;
@@ -13,15 +13,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.PrintStream;
-
 @RestController
 @RequestMapping("/api/v1/")
 public class IndexController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    AuthorsServer authorsServer;
+    AuthorsService authorsServer;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

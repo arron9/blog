@@ -1,9 +1,8 @@
 package com.yunchen.admin.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.yunchen.admin.server.AuthorsServer;
+import com.yunchen.admin.service.AuthorsService;
 import com.yunchen.common.Consts.RetCodeEnum;
-import com.yunchen.common.annotaion.AuthLogin;
 import com.yunchen.common.annotaion.AuthedAccount;
 import com.yunchen.common.model.Authors;
 import com.yunchen.common.model.Response;
@@ -20,7 +19,7 @@ public class HomeController {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    AuthorsServer authorsServer;
+    AuthorsService authorsServer;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
