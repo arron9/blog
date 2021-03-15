@@ -39,21 +39,47 @@ public class PassportController {
             return new Response<>(RetCodeEnum.ERROR_PASSWORD);
         }
 
-        adminUsers.setToken(RandomString.random(32));
+        String token = RandomString.random(32);
+        adminUsers.setToken(token);
         Date date = new Date(System.currentTimeMillis() + 3*24*60*60*1000);
         adminUsers.setTokenExpire(date);
         adminUsersServer.updateAdminUsers(adminUsers);
 
-        return new Response<>(RetCodeEnum.SUCCESS);
+        return new Response<>(RetCodeEnum.SUCCESS, token);
     }
 
     @PostMapping("/reg")
     @AuthLogin
-    public Response register(
+    public Response<AdminUsers> register(
             @RequestParam String username,
-            @RequestParam String password
+            @RequestParam String password,
+            @RequestParam String confirmPassword
     ) {
+        if (!confirmPassword.equals(password)) {
+            RetCodeEnum.FAIL.setMsg("the two password don`t match");
+            return  new Response<>(RetCodeEnum.FAIL);
+        }
 
-       return new Response<>(RetCodeEnum.SUCCESS);
+        AdminUsers adminUsers = adminUsersServer.adminUserInfo(username);
+        if (adminUsers != null) {
+            return new Response<>(RetCodeEnum.REGISTERED);
+        }
+
+        AdminUsers newAdminUser = new AdminUsers();
+        newAdminUser.setUseranme(username);
+        newAdminUser.setPassword(password);
+        newAdminUser.setToken(" ");
+        newAdminUser.setTokenExpire(new Date());
+        newAdminUser.setCreatedAt(new Date());
+        newAdminUser.setUpdatedAt(new Date());
+
+        int id = adminUsersServer.insert(newAdminUser);
+        if (id <= 0) {
+            RetCodeEnum.FAIL.setMsg("insert user error");
+            return new Response<>(RetCodeEnum.FAIL);
+        }
+
+        newAdminUser.setId(id);
+       return new Response<>(RetCodeEnum.SUCCESS, newAdminUser);
     }
 }

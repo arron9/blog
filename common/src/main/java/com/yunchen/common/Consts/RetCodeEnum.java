@@ -6,7 +6,8 @@ public enum RetCodeEnum {
     BADREQUEST(400, "bad request"),
 
     NO_REGISTER(10001, "no register"),
-    ERROR_PASSWORD(10002, "password input error");
+    ERROR_PASSWORD(10002, "password input error"),
+    REGISTERED(10003, "this useranme has already registered");
 
     private int code;
     private String msg;
