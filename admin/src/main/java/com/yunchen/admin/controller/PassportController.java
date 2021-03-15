@@ -66,7 +66,7 @@ public class PassportController {
         }
 
         AdminUsers newAdminUser = new AdminUsers();
-        newAdminUser.setUseranme(username);
+        newAdminUser.setUsername(username);
         newAdminUser.setPassword(password);
         newAdminUser.setToken(" ");
         newAdminUser.setTokenExpire(new Date());

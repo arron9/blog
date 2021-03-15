@@ -46,7 +46,7 @@ public class AuthLoginInterceptor implements HandlerInterceptor {
                     throw new BadRequestException("登录失效");
                 }
 
-                request.setAttribute("username", adminUsers.getUseranme());
+                request.setAttribute("username", adminUsers.getUsername());
             }
         }
 

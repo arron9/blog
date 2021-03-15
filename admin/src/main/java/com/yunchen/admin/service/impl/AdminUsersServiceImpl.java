@@ -18,7 +18,7 @@ public class AdminUsersServiceImpl implements AdminUsersService {
     @Override
     public AdminUsers adminUserInfo(String username) {
         AdminUsers adminUsers = new AdminUsers();
-        adminUsers.setUseranme(username);
+        adminUsers.setUsername(username);
 
         return selectOne(adminUsers);
     }

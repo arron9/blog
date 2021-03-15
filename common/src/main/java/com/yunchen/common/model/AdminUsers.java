@@ -8,7 +8,7 @@ public class AdminUsers {
     @Id
     private Integer id;
 
-    private String useranme;
+    private String username;
 
     private String password;
 
@@ -38,17 +38,17 @@ public class AdminUsers {
     }
 
     /**
-     * @return useranme
+     * @return username
      */
-    public String getUseranme() {
-        return useranme;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param useranme
+     * @param username
      */
-    public void setUseranme(String useranme) {
-        this.useranme = useranme == null ? null : useranme.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     /**
