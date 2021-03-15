@@ -1,6 +1,8 @@
 package com.yunchen.common.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -133,6 +135,15 @@ public class DataSourceConfig {
     public JdbcTemplate accountJdbcTemplate(@Qualifier("accountDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
+
+    @Bean(name = "masterSqlSession")
+    @Primary
+    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(accountDataSource());
+        return sqlSessionFactoryBean.getObject();
+    }
+
 
     public String getDataSourceType() {
         return dataSourceType;

@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableAutoConfiguration
 @PropertySource(value = "classpath:common-${spring.profiles.active}.properties")
 @ComponentScan(basePackages = {"com.yunchen.admin", "com.yunchen.common"})
-@MapperScan({"com.yunchen.common.mapper"})
+@MapperScan(basePackages = {"com.yunchen.common.mapper"}, sqlSessionFactoryRef = "masterSqlSession")
 public class AdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);
