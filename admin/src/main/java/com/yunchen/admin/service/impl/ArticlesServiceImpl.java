@@ -3,6 +3,7 @@ package com.yunchen.admin.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yunchen.admin.service.ArticlesService;
+import com.yunchen.common.beans.PageQuery;
 import com.yunchen.common.mapper.ArticlesMapper;
 import com.yunchen.common.model.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
-    public PageInfo<Articles> allArticles(Articles articles, int page) {
+    public PageInfo<Articles> allArticles(Articles articles, PageQuery pageQuery) {
         OrderByHelper.orderBy("pulished_at desc");
-        PageHelper.startPage(page, 2);
+        PageHelper.startPage(pageQuery.getPage(), pageQuery.getPageSize());
 
         PageInfo<Articles> pageInfo = new PageInfo<>(articlesMapper.listArticles(articles));
         return pageInfo;

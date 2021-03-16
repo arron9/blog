@@ -26,9 +26,9 @@
         <bind name="title" value="'%' + _parameter.getTitle() + '%'" />
         title like #{title}
       </if>
-      <if test="desc != null">
-        <bind name="desc" value="'%' + _parameter.getDesc() + '%'" />
-        and desc like #{desc}
+      <if test="description != null">
+        <bind name="description" value="'%' + _parameter.getDescription() + '%'" />
+        and description like #{description}
       </if>
     </where>
   </select>

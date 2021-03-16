@@ -3,6 +3,7 @@ package com.yunchen.admin.controller;
 import com.github.pagehelper.PageInfo;
 import com.yunchen.admin.service.ArticlesService;
 import com.yunchen.common.Consts.RetCodeEnum;
+import com.yunchen.common.beans.PageQuery;
 import com.yunchen.common.model.Articles;
 import com.yunchen.common.model.Response;
 import org.slf4j.Logger;
@@ -38,7 +39,8 @@ public class ArticleController {
         articles.setTitle(title);
         articles.setDescription(desc);
 
-        return new Response<>(RetCodeEnum.SUCCESS, articlesService.allArticles(articles, page));
+        PageQuery pageQuery = new PageQuery(page);
+        return new Response<>(RetCodeEnum.SUCCESS, articlesService.allArticles(articles, pageQuery));
     }
 
     @PostMapping("/add")

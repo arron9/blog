@@ -19,6 +19,10 @@ public class PageQuery {
         this(1, DEFAULT_PAGE_SIZE);
     }
 
+    public PageQuery(Integer page) {
+        this(page, DEFAULT_PAGE_SIZE);
+    }
+
     public PageQuery(Integer page, Integer pageSize) {
         this(page, pageSize, true);
     }
