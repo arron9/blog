@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,22 +36,43 @@ public class ArticleController {
     ) {
         Articles articles = new Articles();
         articles.setTitle(title);
-        articles.setTitle(desc);
+        articles.setDescription(desc);
 
         return new Response<>(RetCodeEnum.SUCCESS, articlesService.allArticles(articles, page));
     }
 
     @PostMapping("/add")
     public Response<Articles> store(
-            @RequestParam String titile,
+            @RequestParam(defaultValue = "0") int id,
+            @RequestParam String title,
             @RequestParam String desc,
             @RequestParam String content,
-            @RequestParam("0") String category_id
+            @RequestParam(defaultValue = "0") int category_id
     ) {
         Articles articles = new Articles();
-        articles.setTitle(titile);
+        articles.setId(id);
+        Articles articlesRecord = articlesService.selectOne(articles);
+        Date nowDate = new Date();
+        if (articlesRecord != null) {
+            articlesRecord.setTitle(title);
+            articlesRecord.setDescription(desc);
+            articlesRecord.setContent(content);
+            articlesService.updateByPrimaryKey(articlesRecord);
 
-        articlesService.addArticles(articles);
-        return new Response<>(RetCodeEnum.SUCCESS, articles);
+            return new Response<>(RetCodeEnum.SUCCESS, articlesRecord);
+        } else {
+            articles.setTitle(title);
+            articles.setDescription(desc);
+            articles.setContent(content);
+            articles.setCategoryId(category_id);
+            articles.setCreatedAt(nowDate);
+            articles.setUpdatedAt(nowDate);
+            articles.setPulishedAt(nowDate);
+            articles.setAuthorsId(0);
+            articles.setId(0);
+            articlesService.insert(articles);
+
+            return new Response<>(RetCodeEnum.SUCCESS, articles);
+        }
     }
 }

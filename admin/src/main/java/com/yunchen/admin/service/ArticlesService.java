@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface ArticlesService extends BaseService<Articles, Integer> {
     PageInfo<Articles> allArticles(Articles articles, int page);
-    Articles addArticles(Articles articles);
-    int updateArticles(Articles articles);
 }

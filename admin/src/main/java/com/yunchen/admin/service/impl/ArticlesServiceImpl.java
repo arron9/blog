@@ -30,18 +30,4 @@ public class ArticlesServiceImpl implements ArticlesService {
         return pageInfo;
     }
 
-    @Override
-    public Articles addArticles(Articles articles) {
-        int id = articlesMapper.insert(articles);
-        articles.setId(id);
-
-        return articles;
-    }
-
-    @Override
-    public int updateArticles(Articles articles) {
-         int result = articlesMapper.updateByPrimaryKey(articles);
-
-        return result;
-    }
 }

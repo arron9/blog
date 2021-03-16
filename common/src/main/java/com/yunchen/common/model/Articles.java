@@ -6,11 +6,12 @@ import javax.persistence.*;
 @Table(name = "articles")
 public class Articles {
     @Id
+    @GeneratedValue(generator = "JDBC")
     private Integer id;
 
     private String title;
 
-    private String desc;
+    private String description;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -76,17 +77,17 @@ public class Articles {
     }
 
     /**
-     * @return desc
+     * @return description
      */
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * @param desc
+     * @param description
      */
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     /**
