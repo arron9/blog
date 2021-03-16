@@ -4,4 +4,5 @@ import com.yunchen.common.model.AdminUsers;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface AdminUsersMapper extends Mapper<AdminUsers> {
+    AdminUsers selectByUserName(String name);
 }

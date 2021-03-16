@@ -9,7 +9,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@PropertySource(value = "classpath:common-${spring.profiles.active}.properties")
 @ComponentScan(basePackages = {"com.yunchen.admin", "com.yunchen.common"})
 @MapperScan(basePackages = {"com.yunchen.common.mapper"})
 public class AdminApplication {
