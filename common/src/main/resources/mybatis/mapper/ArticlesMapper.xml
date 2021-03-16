@@ -18,4 +18,18 @@
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
+  <select id="listArticles" resultMap="BaseResultMap">
+    select *
+    from articles
+    <where>
+      <if test="title != null">
+        <bind name="title" value="'%' + _parameter.getTitle() + '%'" />
+        title like #{title}
+      </if>
+      <if test="desc != null">
+        <bind name="desc" value="'%' + _parameter.getDesc() + '%'" />
+        and desc like #{desc}
+      </if>
+    </where>
+  </select>
 </mapper>
